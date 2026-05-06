@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>The Wayfinder’s Rest</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap">
+
+    <link rel="stylesheet" href="/rest.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <canvas id="restCanvas" tabindex="0"></canvas>
+
+      <div class="hud">
+        <div class="left">THE WAYFINDER’S REST</div>
+        <div class="right">ARROWS/WASD MOVE · ENTER CHAT</div>
+      </div>
+
+      <form id="chatForm" class="chat" autocomplete="off">
+        <span class="prompt">SAY</span>
+        <input id="chatInput" maxlength="80" placeholder="type and press enter…" />
+      </form>
+    </div>
+
+    <script src="/rest.js"></script>
+  </body>
+</html>

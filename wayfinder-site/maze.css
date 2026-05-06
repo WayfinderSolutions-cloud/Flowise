@@ -41,12 +41,6 @@
   text-shadow:0 0 14px #00FF41;
 }
 
-.exit-label.top{
-  top:44px;
-  left:50%;
-  transform:translateX(-50%);
-}
-
 .exit-label.bottom-left{
   bottom:36px;
   left:36px;
@@ -66,34 +60,8 @@
   97%{opacity:1}
 }
 
-/* Dragon key (link) positioned by JS next to the maze canvas */
-.dragon-key{
-  position:absolute;
-  z-index:40;
-  left:0;
-  top:0;
-
-  width:48px;
-  height:48px;
-
-  display:none;
-  text-decoration:none;
-
-  border:1px solid rgba(0,255,65,0.55);
-  background:rgba(0,0,0,0.75);
-  box-shadow:0 0 18px rgba(0,255,65,0.15) inset;
-
-  transition: transform 0.08s ease, box-shadow 0.12s ease;
-}
-
-.has-dragon-key .dragon-key{ display:block; }
-
-.dragon-key:hover{
-  box-shadow: 0 0 26px rgba(0,255,65,0.25), 0 0 18px rgba(0,255,65,0.20) inset;
-  transform: translateY(-1px);
-}
-
-/* Lateral key (link) positioned by JS next to the maze canvas */
+/* Keys (positioned by JS in labyrinth.html) */
+.dragon-key,
 .lateral-key{
   position:absolute;
   z-index:40;
@@ -113,9 +81,104 @@
   transition: transform 0.08s ease, box-shadow 0.12s ease;
 }
 
+.has-dragon-key .dragon-key{ display:block; }
 .has-lateral-key .lateral-key{ display:block; }
 
+.dragon-key:hover,
 .lateral-key:hover{
   box-shadow: 0 0 26px rgba(0,255,65,0.25), 0 0 18px rgba(0,255,65,0.20) inset;
   transform: translateY(-1px);
+}
+
+/* -------- The Wayfinder's Rest door -------- */
+/* Default: hidden unless both keys exist */
+.rest-door{
+  position:absolute;
+  z-index:35;
+  display:none;
+
+  width:18px;
+  height:24px;
+  border-radius:3px;
+
+  /* simple wood icon */
+  background:
+    linear-gradient(180deg, rgba(118,72,38,0.95), rgba(70,40,20,0.95));
+  border: 1px solid rgba(255,210,77,0.22);
+
+  box-shadow:
+    0 0 10px rgba(0,0,0,0.35) inset,
+    0 0 10px rgba(0,255,65,0.10);
+
+  text-decoration:none;
+  cursor: default;
+  pointer-events:none; /* not clickable until activated */
+}
+
+/* show door icon only when both keys exist */
+.has-dragon-key.has-lateral-key .rest-door{
+  display:block;
+}
+
+/* tiny knob */
+.rest-door::after{
+  content:"";
+  position:absolute;
+  right:3px;
+  top:12px;
+  width:3px;
+  height:3px;
+  border-radius:50%;
+  background: rgba(255,210,77,0.55);
+}
+
+/* faint vine hint (subtle) */
+.rest-door::before{
+  content:"";
+  position:absolute;
+  inset:-3px -4px;
+  border-radius:6px;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(0,255,65,0.12), transparent 55%),
+    radial-gradient(circle at 70% 70%, rgba(0,255,65,0.10), transparent 55%);
+  pointer-events:none;
+}
+
+/* The button/label appears only after you touch the door */
+.door-title{
+  position:absolute;
+  left: 50%;
+  top: -28px;
+  transform: translateX(-50%);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: rgba(0,255,65,0.78);
+  text-shadow: 0 0 10px rgba(0,255,65,0.18);
+  white-space: nowrap;
+
+  padding: 4px 8px;
+  border: 1px solid rgba(0,255,65,0.35);
+  background: rgba(0,0,0,0.78);
+  display:none; /* hidden until activated */
+  pointer-events:none;
+}
+
+/* Activated state: becomes clickable and shows label */
+.rest-door.activated{
+  cursor:pointer;
+  pointer-events:auto;
+  box-shadow:
+    0 0 14px rgba(0,255,65,0.18),
+    0 0 12px rgba(0,0,0,0.35) inset;
+}
+
+.rest-door.activated .door-title{
+  display:block;
+}
+
+.rest-door.activated:hover{
+  transform: translateY(-1px);
+  box-shadow:
+    0 0 18px rgba(0,255,65,0.26),
+    0 0 12px rgba(0,0,0,0.35) inset;
 }

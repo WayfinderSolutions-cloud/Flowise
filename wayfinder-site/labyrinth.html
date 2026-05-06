@@ -27,10 +27,6 @@
       </div>
 
       <!-- Exit labels (revealed by maze.js when reaching exits) -->
-      <div class="exit-label top" id="exitBrowse">
-        <a href="/browse">BROWSE USER</a>
-      </div>
-
       <div class="exit-label bottom-left" id="exitLateral">
         <a href="/lateral">LATERAL MOVEMENT</a>
       </div>
@@ -39,33 +35,23 @@
         <a href="/dragon">RISING DRAGON</a>
       </div>
 
-      <!-- KEYS (shown only if earned; positioned by JS next to maze canvas) -->
+      <!-- Hidden internal door to The Wayfinder's Rest (positioned by JS in maze.js) -->
+      <a id="restDoor" class="rest-door" href="/rest"><span class="door-title">THE WAYFINDER’S REST</span></a>
 
-      <!-- Dragon key -> Dream page -->
+      <!-- KEYS (positioned by JS next to canvas) -->
       <a class="dragon-key" href="/dream" title="DRAGON KEY — A Dream of Dragons and Serpents" aria-label="Dragon Key">
         <svg viewBox="0 0 64 64" width="44" height="44" aria-hidden="true">
-          <!-- Dragon profile silhouette -->
-          <path
-            fill="rgba(0,255,65,0.90)"
-            d="M48 12c-6-2-12 1-15 5-3-1-7 0-10 3-4 4-4 10-1 14-1 6 2 12 9 15 6 3 14 0 18-6 3-5 2-10 0-13 2-4 5-7 9-9-2-4-5-7-10-9Zm-9 19c0-2 2-4 4-4s4 2 4 4-2 4-4 4-4-2-4-4Z"
-          />
-          <!-- Snout / jaw accent -->
-          <path
-            fill="rgba(0,255,65,0.55)"
-            d="M18 42c2 5 7 9 13 10-8 2-16-2-19-9-3-7-1-15 5-20-2 4-2 8 0 11 0 3 1 5 1 8Z"
-          />
-          <!-- Horn / crest -->
-          <path
-            fill="rgba(0,255,65,0.65)"
-            d="M33 12l6 6-6 1-4-4 4-3Z"
-          />
+          <path fill="rgba(0,255,65,0.90)"
+            d="M48 12c-6-2-12 1-15 5-3-1-7 0-10 3-4 4-4 10-1 14-1 6 2 12 9 15 6 3 14 0 18-6 3-5 2-10 0-13 2-4 5-7 9-9-2-4-5-7-10-9Zm-9 19c0-2 2-4 4-4s4 2 4 4-2 4-4 4-4-2-4-4Z"/>
+          <path fill="rgba(0,255,65,0.55)"
+            d="M18 42c2 5 7 9 13 10-8 2-16-2-19-9-3-7-1-15 5-20-2 4-2 8 0 11 0 3 1 5 1 8Z"/>
+          <path fill="rgba(0,255,65,0.65)"
+            d="M33 12l6 6-6 1-4-4 4-3Z"/>
         </svg>
       </a>
 
-      <!-- Lateral key (below dragon key) -->
-      <a class="lateral-key" href="/lateral-dream" title="LATERAL KEY — Camp Run" aria-label="Lateral Key">
+      <a class="lateral-key" href="/lateral-dream" title="LATERAL KEY — Field Record" aria-label="Lateral Key">
         <svg viewBox="0 0 64 64" width="44" height="44" aria-hidden="true">
-          <!-- lateral arrow / movement -->
           <path fill="rgba(0,255,65,0.88)" d="M10 32h34l-6-6 3-3 14 14-14 14-3-3 6-6H10z"/>
           <path fill="rgba(0,255,65,0.55)" d="M12 28h10v8H12z"/>
         </svg>
@@ -73,14 +59,14 @@
 
       <div class="credits">
         <span>NAVIGATE THE LABYRINTH</span>
-        <span>THREE PATHS AWAIT</span>
+        <span>KEYS AWAKEN THE REST</span>
       </div>
     </div>
 
     <script src="/maze.js"></script>
 
     <script>
-      // ---- Clock ----
+      // Clock
       function tick(){
         const d = new Date();
         const pad = n => String(n).padStart(2,'0');
@@ -88,23 +74,23 @@
         if (!el) return;
         el.textContent = pad(d.getHours())+':'+pad(d.getMinutes())+':'+pad(d.getSeconds());
       }
-      tick();
-      setInterval(tick, 1000);
+      tick(); setInterval(tick, 1000);
 
-      // ---- Keys visibility + positioning ----
+      // Keys visibility classes
       const hasDragonKey = localStorage.getItem("wayfinder_key_dragon") === "1";
       const hasLateralKey = localStorage.getItem("wayfinder_key_lateral") === "1";
 
       if (hasDragonKey) document.documentElement.classList.add("has-dragon-key");
       if (hasLateralKey) document.documentElement.classList.add("has-lateral-key");
 
+      // Position keys beside canvas
       function positionKeys(){
         const canvas = document.getElementById("mazeCanvas");
         if(!canvas) return;
 
         const r = canvas.getBoundingClientRect();
-        const gap = 16;   // gap between canvas and keys
-        const stack = 10; // vertical gap between keys
+        const gap = 16;
+        const stack = 10;
 
         const dragon = document.querySelector(".dragon-key");
         const lateral = document.querySelector(".lateral-key");
@@ -133,14 +119,8 @@
         }
       }
 
-      if (hasDragonKey || hasLateralKey) {
-        // position after maze.js has sized the canvas
-        requestAnimationFrame(() => {
-          positionKeys();
-          setTimeout(positionKeys, 60);
-        });
-        window.addEventListener("resize", positionKeys);
-      }
+      requestAnimationFrame(() => { positionKeys(); setTimeout(positionKeys, 60); });
+      window.addEventListener("resize", positionKeys);
     </script>
   </body>
 </html>

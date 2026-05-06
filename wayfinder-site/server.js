@@ -281,6 +281,25 @@ const server = http.createServer(async (req, res) => {
       return serveFile(res, "lateral-vignette.png", "image/png");
     }
 
+    if (req.method === "GET" && req.url === "/rest") {
+     return serveFile(res, "rest.html", "text/html; charset=utf-8");
+    }
+    if (req.method === "GET" && req.url === "/rest") {
+      return serveFile(res, "rest.html", "text/html; charset=utf-8");
+    }
+    if (req.method === "GET" && req.url === "/rest.css") {
+      return serveFile(res, "rest.css", "text/css; charset=utf-8");
+    }
+    if (req.method === "GET" && req.url === "/rest.js") {
+      return serveFile(res, "rest.js", "application/javascript; charset=utf-8");
+    }
+    if (req.method === "GET" && req.url === "/rest-tavern.png") {
+      return serveFile(res, "rest-tavern.png", "image/png");
+    }
+    if (req.method === "GET" && req.url === "/rest-player.png") {
+      return serveFile(res, "rest-player.png", "image/png");
+    }
+
     // -------- API: puzzle submit --------
     if (req.method === "POST" && req.url === "/api/submit") {
       const ip = getClientIp(req);
