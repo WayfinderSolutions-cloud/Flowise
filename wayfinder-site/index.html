@@ -1,0 +1,42 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>The Wayfinder's Rest</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap">
+
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="field" id="field">
+      <!-- Canvas star chart -->
+      <canvas id="starCanvas"></canvas>
+
+      <!-- UI overlays -->
+      <div class="hud top-left">WAYFINDER STAR CHART // LOCAL SECTOR</div>
+      <div class="hud top-right" id="coords">X:000 Y:000</div>
+
+      <div class="panel">
+        <div class="panel-title">ARCHIVE FRAGMENTS</div>
+        <div id="clueList" class="clue-list"></div>
+      </div>
+
+      <form id="gateForm" class="gate">
+        <input id="answer" autocomplete="off" spellcheck="false" placeholder="speak the word" />
+        <button id="submitBtn" type="submit">&#x25B6;</button>
+      </form>
+
+      <div id="result" class="result" aria-live="polite"></div>
+      <div id="clueCounter" class="clue-counter">00</div>
+    </div>
+
+    <!-- keep your existing gate logic -->
+    <script src="/app.js"></script>
+
+    <!-- star chart puzzle logic -->
+    <script src="/starmap.js"></script>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>LATERAL MOVEMENT</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap">
+
+    <link rel="stylesheet" href="/terminal.css" />
+    <link rel="stylesheet" href="/lateral.css" />
+  </head>
+  <body>
+    <div class="screen">
+      <div class="scanlines"></div>
+      <div class="vignette"></div>
+
+      <div class="hud">
+        <div class="status">WAYFINDER OS v0.8 — LATERAL MOVEMENT // CAMP RUN</div>
+        <div class="status right">
+          <span id="hearts">♥♥♥</span>
+        </div>
+      </div>
+
+      <canvas id="lateralCanvas"></canvas>
+
+      <div class="credits">
+        <span>ARROWS: MOVE</span>
+        <span>REACH THE EAST EDGE TO WIN</span>
+      </div>
+
+      <div class="center overlay" id="overlay">
+        <div class="title" id="overlayTitle">LATERAL MOVEMENT</div>
+        <div class="sub" id="overlaySub">Arrow keys to run. Avoid impact zones. Cross the camp.</div>
+        <div class="sub dim">Press Enter to begin.</div>
+      </div>
+    </div>
+
+    <script src="/lateral.js"></script>
+  </body>
+</html>

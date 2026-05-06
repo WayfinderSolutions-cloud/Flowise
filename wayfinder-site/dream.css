@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+:root{
+  --bg:#05040a;
+  --ink:#0b0b14;
+
+  --mint:#3dffb2;
+  --cyan:#4dfcff;
+  --mag:#ff4dff;
+  --gold:#ffd24d;
+
+  --panel:#0a0c1a;
+  --panel2: rgba(10,12,26,0.70);
+}
+
+*{ box-sizing:border-box; margin:0; padding:0; }
+
+html,body{
+  height:100%;
+  background: radial-gradient(1100px 700px at 50% 15%, rgba(255,77,255,0.10), transparent 60%),
+              radial-gradient(900px 600px at 20% 60%, rgba(77,252,255,0.09), transparent 62%),
+              linear-gradient(180deg, #10143a, var(--bg) 70%);
+  color: rgba(240,250,255,0.92);
+  font-family: "Share Tech Mono", ui-monospace, monospace;
+}
+
+.crt{
+  min-height:100%;
+  position:relative;
+  padding: 18px 16px 26px;
+}
+
+.scanlines{
+  pointer-events:none;
+  position:fixed;
+  inset:0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.22) 0px,
+    rgba(0,0,0,0.22) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  mix-blend-mode: overlay;
+  opacity:0.35;
+}
+
+.topbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin: 0 auto 14px;
+  max-width: 1160px;
+}
+
+.brand{
+  font-size:12px;
+  letter-spacing:0.18em;
+  color: rgba(77,252,255,0.70);
+}
+
+.back{
+  text-decoration:none;
+  font-size:12px;
+  letter-spacing:0.14em;
+  color: rgba(255,77,255,0.85);
+  border: 2px solid rgba(255,77,255,0.35);
+  padding: 8px 10px;
+  background: rgba(0,0,0,0.30);
+}
+.back:hover{ background: rgba(255,77,255,0.12); }
+
+.header-title{
+  flex: 1;
+  text-align:center;
+  font-size: 14px;
+  letter-spacing:0.22em;
+  color: rgba(255,210,77,0.92);
+}
+
+/* Big “comic page” frame */
+.page{
+  max-width: 1160px;
+  margin: 0 auto;
+  border: 3px solid rgba(255,210,77,0.35);
+  background: rgba(0,0,0,0.35);
+  box-shadow: 0 0 0 2px rgba(77,252,255,0.08) inset;
+  padding: 14px;
+}
+
+/* Panel grid: one big image + text column */
+.grid{
+  display:grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 14px;
+}
+@media (max-width: 980px){
+  .grid{ grid-template-columns: 1fr; }
+}
+
+/* The main image panel */
+.vignette{
+  position:relative;
+  border: 3px solid rgba(77,252,255,0.28);
+  background: rgba(0,0,0,0.25);
+  padding: 10px;
+}
+
+.vignette img{
+  width:100%;
+  display:block;
+  border: 3px solid rgba(255,77,255,0.28);
+  background: rgba(0,0,0,0.25);
+  image-rendering: pixelated;
+}
+
+.caption{
+  margin-top: 10px;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  color: rgba(77,252,255,0.60);
+}
+
+.card{
+  border: 3px solid rgba(255,210,77,0.28);
+  background: var(--panel2);
+  padding: 12px 12px;
+}
+
+.card h2{
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  color: rgba(255,210,77,0.92);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.card p{
+  font-size: 13px;
+  line-height: 1.65;
+  letter-spacing: 0.04em;
+  margin-bottom: 10px;
+}
+
+/* Character blocks (like “panels” in a manual) */
+.character{
+  border-top: 2px dashed rgba(77,252,255,0.18);
+  padding-top: 10px;
+  margin-top: 10px;
+}
+
+.name{
+  display:flex;
+  gap: 10px;
+  align-items: baseline;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.name a{
+  color: rgba(61,255,178,0.95);
+  text-decoration:none;
+  letter-spacing:0.18em;
+  border-bottom: 2px solid rgba(61,255,178,0.35);
+  padding-bottom:2px;
+}
+.name a:hover{
+  text-shadow: 0 0 12px rgba(61,255,178,0.22);
+}
+
+.tag{
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: rgba(77,252,255,0.55);
+}
+
+.glitch-title{
+  letter-spacing:0.22em;
+  color: rgba(255,77,255,0.92);
+  text-transform: uppercase;
+}
+
+.sfx{
+  color: rgba(255,210,77,0.95);
+  letter-spacing:0.16em;
+}
+
+.oath{
+  color: rgba(77,252,255,0.95);
+  letter-spacing:0.08em;
+}
+
+.smallnote{
+  margin-top: 12px;
+  font-size: 11px;
+  letter-spacing: 0.10em;
+  color: rgba(240,250,255,0.70);
+}
+
+code{ color: rgba(77,252,255,0.90); }

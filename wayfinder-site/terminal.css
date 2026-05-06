@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+:root{
+  --bg:#000;
+  --phosphor:#00FF41;
+  --phosphor-dim:rgba(0,255,65,0.2);
+  --phosphor-mid:rgba(0,255,65,0.55);
+  --phosphor-bright:rgba(0,255,65,0.9);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{
+  background:#000;
+  font-family:'Share Tech Mono',ui-monospace,monospace;
+}
+
+.screen{
+  position:relative;
+  height:100%;
+  overflow:hidden;
+  color:var(--phosphor);
+  background:#000;
+}
+
+.scanlines{
+  pointer-events:none;
+  position:absolute;inset:0;z-index:10;
+  background:repeating-linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.18) 0px,
+    rgba(0,0,0,0.18) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+}
+
+.vignette{
+  pointer-events:none;
+  position:absolute;inset:0;z-index:9;
+  background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,0.82) 100%);
+}
+
+.hud{
+  position:absolute;
+  top:14px;left:16px;right:16px;
+  z-index:20;
+  display:flex;
+  justify-content:space-between;
+  font-size:13px;
+  letter-spacing:0.08em;
+  color:var(--phosphor-mid);
+  text-shadow:0 0 8px var(--phosphor-dim);
+}
+
+.center{
+  position:absolute;inset:0;
+  display:grid;place-items:center;
+  text-align:center;
+  z-index:5;
+}
+
+.title{
+  font-size:clamp(32px,6vw,72px);
+  letter-spacing:0.2em;
+  color:var(--phosphor);
+  text-shadow:
+    0 0 6px var(--phosphor),
+    0 0 18px rgba(0,255,65,0.4);
+}
+
+.credits{
+  position:absolute;
+  left:16px;right:16px;bottom:14px;
+  z-index:20;
+  display:flex;
+  justify-content:space-between;
+  font-size:12px;
+  letter-spacing:0.1em;
+  color:var(--phosphor-mid);
+}

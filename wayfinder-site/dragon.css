@@ -1,0 +1,40 @@
+/* Uses terminal.css for CRT shell styling */
+
+#dragonCanvas,
+#wurmJump{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+}
+
+#wurmJump{
+  display:none;
+  z-index:60;
+  pointer-events:none;
+}
+
+#wurmJump.active{
+  display:block;
+}
+
+/* Start/lose overlay */
+.overlay{
+  z-index:70;
+  pointer-events:auto;
+  cursor:pointer;
+  user-select:none;
+}
+
+.sub{
+  margin-top:12px;
+  font-size:14px;
+  letter-spacing:0.12em;
+  color:rgba(0,255,65,0.60);
+  text-shadow:0 0 10px rgba(0,255,65,0.18);
+}
+
+.sub.dim{
+  color:rgba(0,255,65,0.35);
+  font-size:12px;
+}

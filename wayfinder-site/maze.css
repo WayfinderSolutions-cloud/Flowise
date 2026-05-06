@@ -1,0 +1,121 @@
+.maze-wrapper{
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  z-index:5;
+}
+
+#mazeCanvas{
+  image-rendering:pixelated;
+  cursor:crosshair;
+}
+
+/* Exit labels */
+.exit-label{
+  position:absolute;
+  display:none;
+  z-index:30;
+  font-family:'Share Tech Mono',ui-monospace,monospace;
+  font-size:13px;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  animation:crt-flicker 2.4s infinite;
+}
+
+.exit-label.visible{ display:block; }
+
+.exit-label a{
+  color:#00FF41;
+  text-decoration:none;
+  padding:7px 16px;
+  border:1px solid rgba(0,255,65,0.6);
+  background:rgba(0,0,0,0.85);
+  display:inline-block;
+  text-shadow:0 0 8px rgba(0,255,65,0.6);
+  box-shadow:0 0 10px rgba(0,255,65,0.15) inset;
+}
+
+.exit-label a:hover{
+  background:rgba(0,255,65,0.1);
+  text-shadow:0 0 14px #00FF41;
+}
+
+.exit-label.top{
+  top:44px;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+.exit-label.bottom-left{
+  bottom:36px;
+  left:36px;
+}
+
+.exit-label.bottom-right{
+  bottom:36px;
+  right:36px;
+}
+
+@keyframes crt-flicker{
+  0%,100%{opacity:1}
+  91%{opacity:1}
+  92%{opacity:0.3}
+  93%{opacity:1}
+  96%{opacity:0.7}
+  97%{opacity:1}
+}
+
+/* Dragon key (link) positioned by JS next to the maze canvas */
+.dragon-key{
+  position:absolute;
+  z-index:40;
+  left:0;
+  top:0;
+
+  width:48px;
+  height:48px;
+
+  display:none;
+  text-decoration:none;
+
+  border:1px solid rgba(0,255,65,0.55);
+  background:rgba(0,0,0,0.75);
+  box-shadow:0 0 18px rgba(0,255,65,0.15) inset;
+
+  transition: transform 0.08s ease, box-shadow 0.12s ease;
+}
+
+.has-dragon-key .dragon-key{ display:block; }
+
+.dragon-key:hover{
+  box-shadow: 0 0 26px rgba(0,255,65,0.25), 0 0 18px rgba(0,255,65,0.20) inset;
+  transform: translateY(-1px);
+}
+
+/* Lateral key (link) positioned by JS next to the maze canvas */
+.lateral-key{
+  position:absolute;
+  z-index:40;
+  left:0;
+  top:0;
+
+  width:48px;
+  height:48px;
+
+  display:none;
+  text-decoration:none;
+
+  border:1px solid rgba(0,255,65,0.55);
+  background:rgba(0,0,0,0.75);
+  box-shadow:0 0 18px rgba(0,255,65,0.15) inset;
+
+  transition: transform 0.08s ease, box-shadow 0.12s ease;
+}
+
+.has-lateral-key .lateral-key{ display:block; }
+
+.lateral-key:hover{
+  box-shadow: 0 0 26px rgba(0,255,65,0.25), 0 0 18px rgba(0,255,65,0.20) inset;
+  transform: translateY(-1px);
+}

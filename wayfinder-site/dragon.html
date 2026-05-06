@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>RISING DRAGON</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap">
+
+    <link rel="stylesheet" href="/terminal.css" />
+    <link rel="stylesheet" href="/dragon.css" />
+  </head>
+  <body>
+    <div class="screen">
+      <div class="scanlines"></div>
+      <div class="vignette"></div>
+
+      <div class="hud">
+        <div class="status">WAYFINDER OS v0.8 — RANGE: SOUTH WALL</div>
+        <div class="status right">
+          TIME <span id="timeLeft">60</span>s · SCORE <span id="score">0</span> · COOLDOWN <span id="cd">READY</span>
+        </div>
+      </div>
+
+      <canvas id="dragonCanvas"></canvas>
+      <!-- Win transition canvas (drawn over the game) -->
+      <canvas id="wurmJump"></canvas>
+
+      <div class="credits">
+        <span>MOUSE MOVE: AIM</span>
+        <span>CLICK: FIRE (2s COOLDOWN)</span>
+      </div>
+
+      <div class="center overlay" id="overlay">
+        <div class="title" id="overlayTitle">RISING DRAGON</div>
+        <div class="sub" id="overlaySub">Click to begin. Prevent breaches for 60 seconds.</div>
+        <div class="sub dim">Space/Enter also starts.</div>
+      </div>
+    </div>
+
+    <script src="/dragon.js"></script>
+  </body>
+</html>

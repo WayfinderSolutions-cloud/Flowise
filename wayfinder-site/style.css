@@ -1,0 +1,177 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+:root{
+  --phosphor:#00FF41;
+  --phosphor-dim:rgba(0,255,65,0.18);
+  --phosphor-mid:rgba(0,255,65,0.50);
+  --danger:rgba(255,60,60,0.85);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+html,body{
+  height:100%;
+  background:#000;
+  color:var(--phosphor);
+  font-family:'Share Tech Mono',ui-monospace,monospace;
+  overflow:hidden;
+}
+
+/* CRT scanlines overlay */
+body::after{
+  content:'';
+  position:fixed; inset:0;
+  pointer-events:none;
+  background:repeating-linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.18) 0px,
+    rgba(0,0,0,0.18) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  z-index:999;
+}
+
+.field{
+  position:relative;
+  width:100%;
+  height:100%;
+}
+
+/* Fullscreen star canvas */
+#starCanvas{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+}
+
+/* HUD labels */
+.hud{
+  position:absolute;
+  z-index:10;
+  font-size:12px;
+  letter-spacing:0.12em;
+  color:rgba(0,255,65,0.35);
+  text-shadow:0 0 10px rgba(0,255,65,0.18);
+  pointer-events:none;
+}
+.hud.top-left{ top:14px; left:16px; }
+.hud.top-right{ top:14px; right:16px; }
+
+/* Clue panel */
+.panel{
+  position:absolute;
+  z-index:10;
+  left:16px;
+  bottom:120px;
+  width:min(520px, calc(100% - 32px));
+  border:1px solid rgba(0,255,65,0.25);
+  background:rgba(0,0,0,0.45);
+  box-shadow:0 0 18px rgba(0,255,65,0.08) inset;
+  padding:10px 12px;
+}
+.panel-title{
+  font-size:12px;
+  letter-spacing:0.18em;
+  color:rgba(0,255,65,0.45);
+  margin-bottom:8px;
+}
+
+.clue-list{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  min-height: 7.5em;
+}
+
+/* Clues are hidden until .revealed is added */
+.clue-line{
+  font-size:13px;
+  letter-spacing:0.06em;
+  line-height:1.55;
+  white-space:nowrap;
+  color:transparent;
+  text-shadow:none;
+}
+
+.clue-line.revealed{
+  color:rgba(0,255,65,0.88);
+  text-shadow:0 0 6px #00FF41, 0 0 18px rgba(0,255,65,0.35);
+}
+
+/* Neutralize any special styling for first letters (no bold/bright lead) */
+.clue-line .lead{
+  color:inherit;
+  text-shadow:inherit;
+  font-weight:inherit;
+}
+
+/* Gate input */
+.gate{
+  position:absolute;
+  z-index:10;
+  bottom:36px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:8px;
+  align-items:center;
+}
+
+input{
+  background:transparent;
+  border:none;
+  border-bottom:1px solid rgba(0,255,65,0.4);
+  color:var(--phosphor);
+  font-family:'Share Tech Mono',monospace;
+  font-size:15px;
+  letter-spacing:0.14em;
+  padding:6px 2px;
+  width:240px;
+  outline:none;
+  caret-color:var(--phosphor);
+}
+input::placeholder{color:rgba(0,255,65,0.22);font-size:13px}
+input:focus{border-bottom-color:var(--phosphor);}
+
+button{
+  background:transparent;
+  border:1px solid rgba(0,255,65,0.45);
+  color:var(--phosphor);
+  font-size:14px;
+  padding:5px 12px;
+  cursor:pointer;
+  font-family:'Share Tech Mono',monospace;
+  letter-spacing:0.1em;
+}
+button:hover{background:rgba(0,255,65,0.08);}
+
+/* Result message */
+.result{
+  position:absolute;
+  z-index:10;
+  bottom:80px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:13px;
+  letter-spacing:0.12em;
+  text-align:center;
+  white-space:nowrap;
+  min-height:20px;
+}
+.result.ok{color:var(--phosphor);}
+.result.bad{color:var(--danger);}
+
+/* Counter */
+.clue-counter{
+  position:absolute;
+  z-index:10;
+  bottom:14px;
+  right:16px;
+  font-size:11px;
+  letter-spacing:0.2em;
+  color:rgba(0,255,65,0.35);
+  pointer-events:none;
+  font-family:'Share Tech Mono',ui-monospace,monospace;
+}
